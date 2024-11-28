@@ -697,16 +697,9 @@ X_LIBS
 X_PRE_LIBS
 X_CFLAGS
 XMKMF
-PTHREAD_CFLAGS
-PTHREAD_LIBS
-PTHREAD_CC
 LIBOBJS
 EGREP
 GREP
-GTK_CONFIG
-GTK_LIBS
-GTK_CFLAGS
-PKG_CONFIG
 RCLPRG
 WRCPRG
 FILEPRG
@@ -718,7 +711,6 @@ am__fastdepCCAS_TRUE
 CCASDEPMODE
 CCASFLAGS
 CCAS
-OBJC_LDFLAGS
 am__fastdepOBJC_FALSE
 am__fastdepOBJC_TRUE
 OBJCDEPMODE
@@ -836,9 +828,6 @@ enable_option_checking
 enable_silent_rules
 with_version_tag
 enable_dependency_tracking
-enable_gtktest
-with_gtk_prefix
-with_gtk_exec_prefix
 enable_largefile
 enable_profiling
 enable_aga
@@ -1535,8 +1524,6 @@ Optional Features:
                           do not reject slow dependency extractors
   --disable-dependency-tracking
                           speeds up one-time build
-  --disable-gtktest       do not try to compile and run a test GTK+ program
-  --disable-gtktest       Do not try to compile and run a test GTK program
   --disable-largefile     omit support for large files
   --enable-profiling      Build a profiling (SLOW!) version
   --enable-aga            Enable AGA chipset emulation (default yes)
@@ -1571,8 +1558,6 @@ Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
   --with-version-tag      Optional tag to append to version number
-  --with-gtk-prefix=PFX   Prefix where GTK is installed (optional)
-  --with-gtk-exec-prefix=PFX Exec prefix where GTK is installed (optional)
   --with-sdl              Use SDL library for low-level functions
   --with-sdl-sound        Use SDL library for sound
   --with-sdl-gfx          Use SDL library for graphics
@@ -1927,49 +1912,6 @@ fi
 
 } # ac_fn_c_try_link
 
-# ac_fn_c_try_run LINENO
-# ----------------------
-# Try to run conftest.$ac_ext, and return whether this succeeded. Assumes that
-# executables *can* be run.
-ac_fn_c_try_run ()
-{
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  if { { ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
-printf "%s\n" "$ac_try_echo"; } >&5
-  (eval "$ac_link") 2>&5
-  ac_status=$?
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; } && { ac_try='./conftest$ac_exeext'
-  { { case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
-printf "%s\n" "$ac_try_echo"; } >&5
-  (eval "$ac_try") 2>&5
-  ac_status=$?
-  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; }
-then :
-  ac_retval=0
-else $as_nop
-  printf "%s\n" "$as_me: program exited with status $ac_status" >&5
-       printf "%s\n" "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-       ac_retval=$ac_status
-fi
-  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status $ac_retval
-
-} # ac_fn_c_try_run
-
 # ac_fn_c_check_type LINENO TYPE VAR INCLUDES
 # -------------------------------------------
 # Tests whether TYPE exists after having included INCLUDES, setting cache
@@ -2086,6 +2028,49 @@ printf "%s\n" "$ac_res" >&6; }
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
 
 } # ac_fn_c_check_member
+
+# ac_fn_c_try_run LINENO
+# ----------------------
+# Try to run conftest.$ac_ext, and return whether this succeeded. Assumes that
+# executables *can* be run.
+ac_fn_c_try_run ()
+{
+  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+  if { { ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+printf "%s\n" "$ac_try_echo"; } >&5
+  (eval "$ac_link") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; } && { ac_try='./conftest$ac_exeext'
+  { { case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+printf "%s\n" "$ac_try_echo"; } >&5
+  (eval "$ac_try") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; }
+then :
+  ac_retval=0
+else $as_nop
+  printf "%s\n" "$as_me: program exited with status $ac_status" >&5
+       printf "%s\n" "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+       ac_retval=$ac_status
+fi
+  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
+  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+  as_fn_set_status $ac_retval
+
+} # ac_fn_c_try_run
 
 # ac_fn_c_compute_int LINENO EXPR VAR INCLUDES
 # --------------------------------------------
@@ -6386,289 +6371,7 @@ else
 fi
 
 
-
-if test -n "$ac_tool_prefix"; then
-  for ac_prog in objcc objc gcc cc CC
-  do
-    # Extract the first word of "$ac_tool_prefix$ac_prog", so it can be a program name with args.
-set dummy $ac_tool_prefix$ac_prog; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_OBJC+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test -n "$OBJC"; then
-  ac_cv_prog_OBJC="$OBJC" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_OBJC="$ac_tool_prefix$ac_prog"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-OBJC=$ac_cv_prog_OBJC
-if test -n "$OBJC"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $OBJC" >&5
-printf "%s\n" "$OBJC" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-    test -n "$OBJC" && break
-  done
-fi
-if test -z "$OBJC"; then
-  ac_ct_OBJC=$OBJC
-  for ac_prog in objcc objc gcc cc CC
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_ac_ct_OBJC+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test -n "$ac_ct_OBJC"; then
-  ac_cv_prog_ac_ct_OBJC="$ac_ct_OBJC" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_ac_ct_OBJC="$ac_prog"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-fi
-fi
-ac_ct_OBJC=$ac_cv_prog_ac_ct_OBJC
-if test -n "$ac_ct_OBJC"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_ct_OBJC" >&5
-printf "%s\n" "$ac_ct_OBJC" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-  test -n "$ac_ct_OBJC" && break
-done
-
-  if test "x$ac_ct_OBJC" = x; then
-    OBJC="none"
-  else
-    case $cross_compiling:$ac_tool_warned in
-yes:)
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
-printf "%s\n" "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
-ac_tool_warned=yes ;;
-esac
-    OBJC=$ac_ct_OBJC
-  fi
-fi
-
-
-OBJC_LDFLAGS="-lobjc"
-
-if test "x$OBJC" != xnone ; then
-
-depcc="$OBJC" am_compiler_list='gcc3 gcc'
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking dependency style of $depcc" >&5
-printf %s "checking dependency style of $depcc... " >&6; }
-if test ${am_cv_OBJC_dependencies_compiler_type+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
-  # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
-  # instance it was reported that on HP-UX the gcc test will end up
-  # making a dummy file named 'D' -- because '-MD' means "put the output
-  # in D".
-  rm -rf conftest.dir
-  mkdir conftest.dir
-  # Copy depcomp to subdir because otherwise we won't find it if we're
-  # using a relative directory.
-  cp "$am_depcomp" conftest.dir
-  cd conftest.dir
-  # We will build objects and dependencies in a subdirectory because
-  # it helps to detect inapplicable dependency modes.  For instance
-  # both Tru64's cc and ICC support -MD to output dependencies as a
-  # side effect of compilation, but ICC will put the dependencies in
-  # the current directory while Tru64 will put them in the object
-  # directory.
-  mkdir sub
-
-  am_cv_OBJC_dependencies_compiler_type=none
-  if test "$am_compiler_list" = ""; then
-     am_compiler_list=`sed -n 's/^#*\([a-zA-Z0-9]*\))$/\1/p' < ./depcomp`
-  fi
-  am__universal=false
-
-
-  for depmode in $am_compiler_list; do
-    # Setup a source with many dependencies, because some compilers
-    # like to wrap large dependency lists on column 80 (with \), and
-    # we should not choose a depcomp mode which is confused by this.
-    #
-    # We need to recreate these files for each test, as the compiler may
-    # overwrite some of them when testing with obscure command lines.
-    # This happens at least with the AIX C compiler.
-    : > sub/conftest.c
-    for i in 1 2 3 4 5 6; do
-      echo '#include "conftst'$i'.h"' >> sub/conftest.c
-      # Using ": > sub/conftst$i.h" creates only sub/conftst1.h with
-      # Solaris 10 /bin/sh.
-      echo '/* dummy */' > sub/conftst$i.h
-    done
-    echo "${am__include} ${am__quote}sub/conftest.Po${am__quote}" > confmf
-
-    # We check with '-c' and '-o' for the sake of the "dashmstdout"
-    # mode.  It turns out that the SunPro C++ compiler does not properly
-    # handle '-M -o', and we need to detect this.  Also, some Intel
-    # versions had trouble with output in subdirs.
-    am__obj=sub/conftest.${OBJEXT-o}
-    am__minus_obj="-o $am__obj"
-    case $depmode in
-    gcc)
-      # This depmode causes a compiler race in universal mode.
-      test "$am__universal" = false || continue
-      ;;
-    nosideeffect)
-      # After this tag, mechanisms are not by side-effect, so they'll
-      # only be used when explicitly requested.
-      if test "x$enable_dependency_tracking" = xyes; then
-	continue
-      else
-	break
-      fi
-      ;;
-    msvc7 | msvc7msys | msvisualcpp | msvcmsys)
-      # This compiler won't grok '-c -o', but also, the minuso test has
-      # not run yet.  These depmodes are late enough in the game, and
-      # so weak that their functioning should not be impacted.
-      am__obj=conftest.${OBJEXT-o}
-      am__minus_obj=
-      ;;
-    none) break ;;
-    esac
-    if depmode=$depmode \
-       source=sub/conftest.c object=$am__obj \
-       depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
-       $SHELL ./depcomp $depcc -c $am__minus_obj sub/conftest.c \
-         >/dev/null 2>conftest.err &&
-       grep sub/conftst1.h sub/conftest.Po > /dev/null 2>&1 &&
-       grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
-       grep $am__obj sub/conftest.Po > /dev/null 2>&1 &&
-       ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      # icc doesn't choke on unknown options, it will just issue warnings
-      # or remarks (even with -Werror).  So we grep stderr for any message
-      # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
-      #   icc: Command line warning: ignoring option '-M'; no argument required
-      # The diagnosis changed in icc 8.0:
-      #   icc: Command line remark: option '-MP' not supported
-      if (grep 'ignoring option' conftest.err ||
-          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
-        am_cv_OBJC_dependencies_compiler_type=$depmode
-        break
-      fi
-    fi
-  done
-
-  cd ..
-  rm -rf conftest.dir
-else
-  am_cv_OBJC_dependencies_compiler_type=none
-fi
-
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $am_cv_OBJC_dependencies_compiler_type" >&5
-printf "%s\n" "$am_cv_OBJC_dependencies_compiler_type" >&6; }
-OBJCDEPMODE=depmode=$am_cv_OBJC_dependencies_compiler_type
-
- if
-  test "x$enable_dependency_tracking" != xno \
-  && test "$am_cv_OBJC_dependencies_compiler_type" = gcc3; then
-  am__fastdepOBJC_TRUE=
-  am__fastdepOBJC_FALSE='#'
-else
-  am__fastdepOBJC_TRUE='#'
-  am__fastdepOBJC_FALSE=
-fi
-
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if Objective C compiler works" >&5
-printf %s "checking if Objective C compiler works... " >&6; }
-  cat >>conftest.m <<EOF
-#include <objc/Object.h>
-@interface Moo:Object
-{
-}
-- moo;
-int main();
-@end
-
-@implementation Moo
-- moo
-{
-  exit(0);
-}
-
-int main()
-{
-  id moo;
-  moo = [Moo new];
-  [moo moo];
-  return 1;
-}
-@end
-EOF
-  ${OBJC} conftest.m ${OBJC_LDFLAGS} >&5 2>&5
-  if test -f a.out -o -f a.exe ; then
-    result=yes
-  else
-    result=no
-    echo failed program is: >&5
-    cat conftest.m >&5
-  fi
-  rm -f conftest.m a.out a.exe
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $result" >&5
-printf "%s\n" "$result" >&6; }
-fi
-
-
+AS_PROG_OBJC
 # By default we simply use the C compiler to build assembly code.
 
 test "${CCAS+set}" = set || CCAS=$CC
@@ -7511,556 +7214,9 @@ else $as_nop
 fi
 
 
-# Check whether --enable-gtktest was given.
-if test ${enable_gtktest+y}
-then :
-  enableval=$enable_gtktest;
-else $as_nop
-  enable_gtktest=yes
-fi
-
-
-  pkg_config_args=gtk+-2.0
-  for module in .
-  do
-      case "$module" in
-         gthread)
-             pkg_config_args="$pkg_config_args gthread-2.0"
-         ;;
-      esac
-  done
-
-  no_gtk=""
-
-  # Extract the first word of "pkg-config", so it can be a program name with args.
-set dummy pkg-config; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_path_PKG_CONFIG+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  case $PKG_CONFIG in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_path_PKG_CONFIG="$as_dir$ac_word$ac_exec_ext"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
-  ;;
-esac
-fi
-PKG_CONFIG=$ac_cv_path_PKG_CONFIG
-if test -n "$PKG_CONFIG"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $PKG_CONFIG" >&5
-printf "%s\n" "$PKG_CONFIG" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-
-  if test x$PKG_CONFIG != xno ; then
-    if pkg-config --atleast-pkgconfig-version 0.7 ; then
-      :
-    else
-      echo "*** pkg-config too old; version 0.7 or better required."
-      no_gtk=yes
-      PKG_CONFIG=no
-    fi
-  else
-    no_gtk=yes
-  fi
-
-  min_gtk_version=2.0.0
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for GTK+ - version >= $min_gtk_version" >&5
-printf %s "checking for GTK+ - version >= $min_gtk_version... " >&6; }
-
-  if test x$PKG_CONFIG != xno ; then
-    ## don't try to run the test against uninstalled libtool libs
-    if $PKG_CONFIG --uninstalled $pkg_config_args; then
-	  echo "Will use uninstalled version of GTK+ found in PKG_CONFIG_PATH"
-	  enable_gtktest=no
-    fi
-
-    if $PKG_CONFIG --atleast-version $min_gtk_version $pkg_config_args; then
-	  :
-    else
-	  no_gtk=yes
-    fi
-  fi
-
-  if test x"$no_gtk" = x ; then
-    GTK_CFLAGS=`$PKG_CONFIG $pkg_config_args --cflags`
-    GTK_LIBS=`$PKG_CONFIG $pkg_config_args --libs`
-    gtk_config_major_version=`$PKG_CONFIG --modversion gtk+-2.0 | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\1/'`
-    gtk_config_minor_version=`$PKG_CONFIG --modversion gtk+-2.0 | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\2/'`
-    gtk_config_micro_version=`$PKG_CONFIG --modversion gtk+-2.0 | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
-    if test "x$enable_gtktest" = "xyes" ; then
-      ac_save_CFLAGS="$CFLAGS"
-      ac_save_LIBS="$LIBS"
-      CFLAGS="$CFLAGS $GTK_CFLAGS"
-      LIBS="$GTK_LIBS $LIBS"
-      rm -f conf.gtktest
-      if test "$cross_compiling" = yes
-then :
-  echo $ac_n "cross compiling; assumed OK... $ac_c"
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#include <gtk/gtk.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-int
-main ()
-{
-  int major, minor, micro;
-  char *tmp_version;
-
-  system ("touch conf.gtktest");
-
-  /* HP/UX 9 (%@#!) writes to sscanf strings */
-  tmp_version = g_strdup("$min_gtk_version");
-  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
-     printf("%s, bad version string\n", "$min_gtk_version");
-     exit(1);
-   }
-
-  if ((gtk_major_version != $gtk_config_major_version) ||
-      (gtk_minor_version != $gtk_config_minor_version) ||
-      (gtk_micro_version != $gtk_config_micro_version))
-    {
-      printf("\n*** 'pkg-config --modversion gtk+-2.0' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n",
-             $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
-             gtk_major_version, gtk_minor_version, gtk_micro_version);
-      printf ("*** was found! If pkg-config was correct, then it is best\n");
-      printf ("*** to remove the old version of GTK+. You may also be able to fix the error\n");
-      printf("*** by modifying your LD_LIBRARY_PATH enviroment variable, or by editing\n");
-      printf("*** /etc/ld.so.conf. Make sure you have run ldconfig if that is\n");
-      printf("*** required on your system.\n");
-      printf("*** If pkg-config was wrong, set the environment variable PKG_CONFIG_PATH\n");
-      printf("*** to point to the correct configuration files\n");
-    }
-  else if ((gtk_major_version != GTK_MAJOR_VERSION) ||
-	   (gtk_minor_version != GTK_MINOR_VERSION) ||
-           (gtk_micro_version != GTK_MICRO_VERSION))
-    {
-      printf("*** GTK+ header files (version %d.%d.%d) do not match\n",
-	     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-      printf("*** library (version %d.%d.%d)\n",
-	     gtk_major_version, gtk_minor_version, gtk_micro_version);
-    }
-  else
-    {
-      if ((gtk_major_version > major) ||
-        ((gtk_major_version == major) && (gtk_minor_version > minor)) ||
-        ((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
-      {
-        return 0;
-       }
-     else
-      {
-        printf("\n*** An old version of GTK+ (%d.%d.%d) was found.\n",
-               gtk_major_version, gtk_minor_version, gtk_micro_version);
-        printf("*** You need a version of GTK+ newer than %d.%d.%d. The latest version of\n",
-	       major, minor, micro);
-        printf("*** GTK+ is always available from ftp://ftp.gtk.org.\n");
-        printf("***\n");
-        printf("*** If you have already installed a sufficiently new version, this error\n");
-        printf("*** probably means that the wrong copy of the pkg-config shell script is\n");
-        printf("*** being found. The easiest way to fix this is to remove the old version\n");
-        printf("*** of GTK+, but you can also set the PKG_CONFIG environment to point to the\n");
-        printf("*** correct copy of pkg-config. (In this case, you will have to\n");
-        printf("*** modify your LD_LIBRARY_PATH enviroment variable, or edit /etc/ld.so.conf\n");
-        printf("*** so that the correct libraries are found at run-time))\n");
-      }
-    }
-  return 1;
-}
-
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-
-else $as_nop
-  no_gtk=yes
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-       CFLAGS="$ac_save_CFLAGS"
-       LIBS="$ac_save_LIBS"
-     fi
-  fi
-  if test "x$no_gtk" = x ; then
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes (version $gtk_config_major_version.$gtk_config_minor_version.$gtk_config_micro_version)" >&5
-printf "%s\n" "yes (version $gtk_config_major_version.$gtk_config_minor_version.$gtk_config_micro_version)" >&6; }
-     HAVE_GTK=yes
-  else
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-     if test "$PKG_CONFIG" = "no" ; then
-       echo "*** A new enough version of pkg-config was not found."
-       echo "*** See http://pkgconfig.sourceforge.net"
-     else
-       if test -f conf.gtktest ; then
-        :
-       else
-          echo "*** Could not run GTK+ test program, checking why..."
-	  ac_save_CFLAGS="$CFLAGS"
-	  ac_save_LIBS="$LIBS"
-          CFLAGS="$CFLAGS $GTK_CFLAGS"
-          LIBS="$LIBS $GTK_LIBS"
-          cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#include <gtk/gtk.h>
-#include <stdio.h>
-
-int
-main (void)
-{
- return ((gtk_major_version) || (gtk_minor_version) || (gtk_micro_version));
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-   echo "*** The test program compiled, but did not run. This usually means"
-          echo "*** that the run-time linker is not finding GTK+ or finding the wrong"
-          echo "*** version of GTK+. If it is not finding GTK+, you'll need to set your"
-          echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
-          echo "*** to the installed location  Also, make sure you have run ldconfig if that"
-          echo "*** is required on your system"
-	  echo "***"
-          echo "*** If you have an old version installed, it is best to remove it, although"
-          echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"
-else $as_nop
-   echo "*** The test program failed to compile or link. See the file config.log for the"
-          echo "*** exact error that occured. This usually means GTK+ is incorrectly installed."
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-          CFLAGS="$ac_save_CFLAGS"
-          LIBS="$ac_save_LIBS"
-       fi
-     fi
-     GTK_CFLAGS=""
-     GTK_LIBS=""
-     HAVE_GTK=no
-  fi
-
-
-  rm -f conf.gtktest
-
+AM_PATH_GTK_2_0(2.0.0,HAVE_GTK=yes,HAVE_GTK=no)
 if [ "x$HAVE_GTK" = "xno" ]; then
-
-# Check whether --with-gtk-prefix was given.
-if test ${with_gtk_prefix+y}
-then :
-  withval=$with_gtk_prefix; gtk_config_prefix="$withval"
-else $as_nop
-  gtk_config_prefix=""
-fi
-
-
-# Check whether --with-gtk-exec-prefix was given.
-if test ${with_gtk_exec_prefix+y}
-then :
-  withval=$with_gtk_exec_prefix; gtk_config_exec_prefix="$withval"
-else $as_nop
-  gtk_config_exec_prefix=""
-fi
-
-# Check whether --enable-gtktest was given.
-if test ${enable_gtktest+y}
-then :
-  enableval=$enable_gtktest;
-else $as_nop
-  enable_gtktest=yes
-fi
-
-
-  for module in .
-  do
-      case "$module" in
-         gthread)
-             gtk_config_args="$gtk_config_args gthread"
-         ;;
-      esac
-  done
-
-  if test x$gtk_config_exec_prefix != x ; then
-     gtk_config_args="$gtk_config_args --exec-prefix=$gtk_config_exec_prefix"
-     if test x${GTK_CONFIG+set} != xset ; then
-        GTK_CONFIG=$gtk_config_exec_prefix/bin/gtk-config
-     fi
-  fi
-  if test x$gtk_config_prefix != x ; then
-     gtk_config_args="$gtk_config_args --prefix=$gtk_config_prefix"
-     if test x${GTK_CONFIG+set} != xset ; then
-        GTK_CONFIG=$gtk_config_prefix/bin/gtk-config
-     fi
-  fi
-
-  # Extract the first word of "gtk-config", so it can be a program name with args.
-set dummy gtk-config; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_path_GTK_CONFIG+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  case $GTK_CONFIG in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_GTK_CONFIG="$GTK_CONFIG" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_path_GTK_CONFIG="$as_dir$ac_word$ac_exec_ext"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_path_GTK_CONFIG" && ac_cv_path_GTK_CONFIG="no"
-  ;;
-esac
-fi
-GTK_CONFIG=$ac_cv_path_GTK_CONFIG
-if test -n "$GTK_CONFIG"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GTK_CONFIG" >&5
-printf "%s\n" "$GTK_CONFIG" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-  min_gtk_version=1.0.0
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for GTK - version >= $min_gtk_version" >&5
-printf %s "checking for GTK - version >= $min_gtk_version... " >&6; }
-  no_gtk=""
-  if test "$GTK_CONFIG" = "no" ; then
-    no_gtk=yes
-  else
-    GTK_CFLAGS=`$GTK_CONFIG $gtk_config_args --cflags`
-    GTK_LIBS=`$GTK_CONFIG $gtk_config_args --libs`
-    gtk_config_major_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\1/'`
-    gtk_config_minor_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\2/'`
-    gtk_config_micro_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
-    if test "x$enable_gtktest" = "xyes" ; then
-      ac_save_CFLAGS="$CFLAGS"
-      ac_save_LIBS="$LIBS"
-      CFLAGS="$CFLAGS $GTK_CFLAGS"
-      LIBS="$GTK_LIBS $LIBS"
-      rm -f conf.gtktest
-      if test "$cross_compiling" = yes
-then :
-  echo $ac_n "cross compiling; assumed OK... $ac_c"
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#include <gtk/gtk.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-int
-main ()
-{
-  int major, minor, micro;
-  char *tmp_version;
-
-  system ("touch conf.gtktest");
-
-  /* HP/UX 9 (%@#!) writes to sscanf strings */
-  tmp_version = g_strdup("$min_gtk_version");
-  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
-     printf("%s, bad version string\n", "$min_gtk_version");
-     exit(1);
-   }
-
-  if ((gtk_major_version != $gtk_config_major_version) ||
-      (gtk_minor_version != $gtk_config_minor_version) ||
-      (gtk_micro_version != $gtk_config_micro_version))
-    {
-      printf("\n*** 'gtk-config --version' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n",
-             $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
-             gtk_major_version, gtk_minor_version, gtk_micro_version);
-      printf ("*** was found! If gtk-config was correct, then it is best\n");
-      printf ("*** to remove the old version of GTK+. You may also be able to fix the error\n");
-      printf("*** by modifying your LD_LIBRARY_PATH enviroment variable, or by editing\n");
-      printf("*** /etc/ld.so.conf. Make sure you have run ldconfig if that is\n");
-      printf("*** required on your system.\n");
-      printf("*** If gtk-config was wrong, set the environment variable GTK_CONFIG\n");
-      printf("*** to point to the correct copy of gtk-config, and remove the file config.cache\n");
-      printf("*** before re-running configure\n");
-    }
-#if defined (GTK_MAJOR_VERSION) && defined (GTK_MINOR_VERSION) && defined (GTK_MICRO_VERSION)
-  else if ((gtk_major_version != GTK_MAJOR_VERSION) ||
-	   (gtk_minor_version != GTK_MINOR_VERSION) ||
-           (gtk_micro_version != GTK_MICRO_VERSION))
-    {
-      printf("*** GTK+ header files (version %d.%d.%d) do not match\n",
-	     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-      printf("*** library (version %d.%d.%d)\n",
-	     gtk_major_version, gtk_minor_version, gtk_micro_version);
-    }
-#endif /* defined (GTK_MAJOR_VERSION) ... */
-  else
-    {
-      if ((gtk_major_version > major) ||
-        ((gtk_major_version == major) && (gtk_minor_version > minor)) ||
-        ((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
-      {
-        return 0;
-       }
-     else
-      {
-        printf("\n*** An old version of GTK+ (%d.%d.%d) was found.\n",
-               gtk_major_version, gtk_minor_version, gtk_micro_version);
-        printf("*** You need a version of GTK+ newer than %d.%d.%d. The latest version of\n",
-	       major, minor, micro);
-        printf("*** GTK+ is always available from ftp://ftp.gtk.org.\n");
-        printf("***\n");
-        printf("*** If you have already installed a sufficiently new version, this error\n");
-        printf("*** probably means that the wrong copy of the gtk-config shell script is\n");
-        printf("*** being found. The easiest way to fix this is to remove the old version\n");
-        printf("*** of GTK+, but you can also set the GTK_CONFIG environment to point to the\n");
-        printf("*** correct copy of gtk-config. (In this case, you will have to\n");
-        printf("*** modify your LD_LIBRARY_PATH enviroment variable, or edit /etc/ld.so.conf\n");
-        printf("*** so that the correct libraries are found at run-time))\n");
-      }
-    }
-  return 1;
-}
-
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-
-else $as_nop
-  no_gtk=yes
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-       CFLAGS="$ac_save_CFLAGS"
-       LIBS="$ac_save_LIBS"
-     fi
-  fi
-  if test "x$no_gtk" = x ; then
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-printf "%s\n" "yes" >&6; }
-     HAVE_GTK=yes
-  else
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-     if test "$GTK_CONFIG" = "no" ; then
-       echo "*** The gtk-config script installed by GTK could not be found"
-       echo "*** If GTK was installed in PREFIX, make sure PREFIX/bin is in"
-       echo "*** your path, or set the GTK_CONFIG environment variable to the"
-       echo "*** full path to gtk-config."
-     else
-       if test -f conf.gtktest ; then
-        :
-       else
-          echo "*** Could not run GTK test program, checking why..."
-          CFLAGS="$CFLAGS $GTK_CFLAGS"
-          LIBS="$LIBS $GTK_LIBS"
-          cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#include <gtk/gtk.h>
-#include <stdio.h>
-
-int
-main (void)
-{
- return ((gtk_major_version) || (gtk_minor_version) || (gtk_micro_version));
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-   echo "*** The test program compiled, but did not run. This usually means"
-          echo "*** that the run-time linker is not finding GTK or finding the wrong"
-          echo "*** version of GTK. If it is not finding GTK, you'll need to set your"
-          echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
-          echo "*** to the installed location  Also, make sure you have run ldconfig if that"
-          echo "*** is required on your system"
-	  echo "***"
-          echo "*** If you have an old version installed, it is best to remove it, although"
-          echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"
-          echo "***"
-          echo "*** If you have a RedHat 5.0 system, you should remove the GTK package that"
-          echo "*** came with the system with the command"
-          echo "***"
-          echo "***    rpm --erase --nodeps gtk gtk-devel"
-else $as_nop
-   echo "*** The test program failed to compile or link. See the file config.log for the"
-          echo "*** exact error that occured. This usually means GTK was incorrectly installed"
-          echo "*** or that you have moved GTK since it was installed. In the latter case, you"
-          echo "*** may want to edit the gtk-config script: $GTK_CONFIG"
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-          CFLAGS="$ac_save_CFLAGS"
-          LIBS="$ac_save_LIBS"
-       fi
-     fi
-     GTK_CFLAGS=""
-     GTK_LIBS=""
-     HAVE_GTK=no
-  fi
-
-
-  rm -f conf.gtktest
-
+  AM_PATH_GTK(1.0.0,HAVE_GTK=yes,HAVE_GTK=no)
 fi
 
 ac_header_dirent=no
@@ -9434,42 +8590,7 @@ printf "%s\n" "#define SIZEOF_LONG_DOUBLE $ac_cv_sizeof_long_double" >>confdefs.
 
 fi
 
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for socklen_t" >&5
-printf %s "checking for socklen_t... " >&6; }
-if test ${ac_cv_type_socklen_t+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-   #include <sys/socket.h>
-int
-main (void)
-{
-socklen_t len = 42; return 0;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_compile "$LINENO"
-then :
-  ac_cv_type_socklen_t=yes
-else $as_nop
-  ac_cv_type_socklen_t=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_type_socklen_t" >&5
-printf "%s\n" "$ac_cv_type_socklen_t" >&6; }
-  if test $ac_cv_type_socklen_t != yes; then
-
-printf "%s\n" "#define socklen_t int" >>confdefs.h
-
-  fi
-
+TYPE_SOCKLEN_T
 
 
 if test $ac_cv_c_compiler_gnu = yes; then
@@ -10129,334 +9250,7 @@ then :
 
 fi
 
-
-
-echo "checking how to get filesystem space usage..."
-ac_fsusage_space=no
-
-# Perform only the link test since it seems there are no variants of the
-# statvfs function.  This check is more than just AC_CHECK_FUNCS(statvfs)
-# because that got a false positive on SCO OSR5.  Adding the declaration
-# of a `struct statvfs' causes this test to fail (as it should) on such
-# systems.  That system is reported to work fine with STAT_STATFS4 which
-# is what it gets when this test fails.
-if test $ac_fsusage_space = no; then
-  # SVR4
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for statvfs function (SVR4)" >&5
-printf %s "checking for statvfs function (SVR4)... " >&6; }
-if test ${fu_cv_sys_stat_statvfs+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#ifdef __GLIBC__
-Do not use statvfs on systems with GNU libc, because that function stats
-all preceding entries in /proc/mounts, and that makes df hang if even
-one of the corresponding file systems is hard-mounted, but not available.
-#endif
-#include <sys/statvfs.h>
-int
-main (void)
-{
-struct statvfs fsd; statvfs (0, &fsd);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  fu_cv_sys_stat_statvfs=yes
-else $as_nop
-  fu_cv_sys_stat_statvfs=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_statvfs" >&5
-printf "%s\n" "$fu_cv_sys_stat_statvfs" >&6; }
-  if test $fu_cv_sys_stat_statvfs = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATVFS 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-  # DEC Alpha running OSF/1
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for 3-argument statfs function (DEC OSF/1)" >&5
-printf %s "checking for 3-argument statfs function (DEC OSF/1)... " >&6; }
-  if test ${fu_cv_sys_stat_statfs3_osf1+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test "$cross_compiling" = yes
-then :
-  fu_cv_sys_stat_statfs3_osf1=no
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#include <sys/param.h>
-#include <sys/types.h>
-#include <sys/mount.h>
-  main ()
-  {
-    struct statfs fsd;
-    fsd.f_fsize = 0;
-    exit (statfs (".", &fsd, sizeof (struct statfs)));
-  }
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-  fu_cv_sys_stat_statfs3_osf1=yes
-else $as_nop
-  fu_cv_sys_stat_statfs3_osf1=no
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-fi
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_statfs3_osf1" >&5
-printf "%s\n" "$fu_cv_sys_stat_statfs3_osf1" >&6; }
-  if test $fu_cv_sys_stat_statfs3_osf1 = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATFS3_OSF1 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-# AIX
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for two-argument statfs with statfs.bsize member (AIX, 4.3BSD)" >&5
-printf %s "checking for two-argument statfs with statfs.bsize member (AIX, 4.3BSD)... " >&6; }
-  if test ${fu_cv_sys_stat_statfs2_bsize+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test "$cross_compiling" = yes
-then :
-  fu_cv_sys_stat_statfs2_bsize=no
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
-#endif
-#ifdef HAVE_SYS_MOUNT_H
-#include <sys/mount.h>
-#endif
-#ifdef HAVE_SYS_VFS_H
-#include <sys/vfs.h>
-#endif
-  main ()
-  {
-  struct statfs fsd;
-  fsd.f_bsize = 0;
-  exit (statfs (".", &fsd));
-  }
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-  fu_cv_sys_stat_statfs2_bsize=yes
-else $as_nop
-  fu_cv_sys_stat_statfs2_bsize=no
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-fi
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_statfs2_bsize" >&5
-printf "%s\n" "$fu_cv_sys_stat_statfs2_bsize" >&6; }
-  if test $fu_cv_sys_stat_statfs2_bsize = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATFS2_BSIZE 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-# SVR3
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for four-argument statfs (AIX-3.2.5, SVR3)" >&5
-printf %s "checking for four-argument statfs (AIX-3.2.5, SVR3)... " >&6; }
-  if test ${fu_cv_sys_stat_statfs4+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test "$cross_compiling" = yes
-then :
-  fu_cv_sys_stat_statfs4=no
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#include <sys/statfs.h>
-  main ()
-  {
-  struct statfs fsd;
-  exit (statfs (".", &fsd, sizeof fsd, 0));
-  }
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-  fu_cv_sys_stat_statfs4=yes
-else $as_nop
-  fu_cv_sys_stat_statfs4=no
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-fi
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_statfs4" >&5
-printf "%s\n" "$fu_cv_sys_stat_statfs4" >&6; }
-  if test $fu_cv_sys_stat_statfs4 = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATFS4 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-# 4.4BSD and NetBSD
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for two-argument statfs with statfs.fsize member (4.4BSD and NetBSD)" >&5
-printf %s "checking for two-argument statfs with statfs.fsize member (4.4BSD and NetBSD)... " >&6; }
-  if test ${fu_cv_sys_stat_statfs2_fsize+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test "$cross_compiling" = yes
-then :
-  fu_cv_sys_stat_statfs2_fsize=no
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
-#endif
-#ifdef HAVE_SYS_MOUNT_H
-#include <sys/mount.h>
-#endif
-  main ()
-  {
-  struct statfs fsd;
-  fsd.f_fsize = 0;
-  exit (statfs (".", &fsd));
-  }
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-  fu_cv_sys_stat_statfs2_fsize=yes
-else $as_nop
-  fu_cv_sys_stat_statfs2_fsize=no
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-fi
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_statfs2_fsize" >&5
-printf "%s\n" "$fu_cv_sys_stat_statfs2_fsize" >&6; }
-  if test $fu_cv_sys_stat_statfs2_fsize = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATFS2_FSIZE 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-  # Ultrix
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for two-argument statfs with struct fs_data (Ultrix)" >&5
-printf %s "checking for two-argument statfs with struct fs_data (Ultrix)... " >&6; }
-  if test ${fu_cv_sys_stat_fs_data+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test "$cross_compiling" = yes
-then :
-  fu_cv_sys_stat_fs_data=no
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
-#endif
-#ifdef HAVE_SYS_MOUNT_H
-#include <sys/mount.h>
-#endif
-#ifdef HAVE_SYS_FS_TYPES_H
-#include <sys/fs_types.h>
-#endif
-  main ()
-  {
-  struct fs_data fsd;
-  /* Ultrix's statfs returns 1 for success,
-     0 for not mounted, -1 for failure.  */
-  exit (statfs (".", &fsd) != 1);
-  }
-_ACEOF
-if ac_fn_c_try_run "$LINENO"
-then :
-  fu_cv_sys_stat_fs_data=yes
-else $as_nop
-  fu_cv_sys_stat_fs_data=no
-fi
-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-  conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-fi
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_stat_fs_data" >&5
-printf "%s\n" "$fu_cv_sys_stat_fs_data" >&6; }
-  if test $fu_cv_sys_stat_fs_data = yes; then
-    ac_fsusage_space=yes
-
-printf "%s\n" "#define STAT_STATFS2_FS_DATA 1" >>confdefs.h
-
-  fi
-fi
-
-if test $ac_fsusage_space = no; then
-  # SVR2
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/filsys.h>
-
-_ACEOF
-if ac_fn_c_try_cpp "$LINENO"
-then :
-
-printf "%s\n" "#define STAT_READ_FILSYS 1" >>confdefs.h
-
-    ac_fsusage_space=yes
-fi
-rm -f conftest.err conftest.i conftest.$ac_ext
-fi
-
-if test $ac_fsusage_space = yes
-then :
-  gl_cv_fs_space=yes
-else $as_nop
-  gl_cv_fs_space=no
-fi
-
-
+jm_FILE_SYSTEM_USAGE(gl_cv_fs_space=yes, gl_cv_fs_space=no)
 if test $gl_cv_fs_space = yes; then
   case " $LIBOBJS " in
   *" fsusage.$ac_objext "* ) ;;
@@ -10464,210 +9258,7 @@ if test $gl_cv_fs_space = yes; then
  ;;
 esac
 
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inttypes.h" >&5
-printf %s "checking for inttypes.h... " >&6; }
-if test ${jm_ac_cv_header_inttypes_h+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#include <inttypes.h>
-int
-main (void)
-{
-uintmax_t i = (uintmax_t) -1;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_compile "$LINENO"
-then :
-  jm_ac_cv_header_inttypes_h=yes
-else $as_nop
-  jm_ac_cv_header_inttypes_h=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $jm_ac_cv_header_inttypes_h" >&5
-printf "%s\n" "$jm_ac_cv_header_inttypes_h" >&6; }
-  if test $jm_ac_cv_header_inttypes_h = yes; then
-
-printf "%s\n" "#define HAVE_INTTYPES_H_WITH_UINTMAX 1" >>confdefs.h
-
-  fi
-
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for stdint.h" >&5
-printf %s "checking for stdint.h... " >&6; }
-if test ${jm_ac_cv_header_stdint_h+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <sys/types.h>
-#include <stdint.h>
-int
-main (void)
-{
-uintmax_t i = (uintmax_t) -1;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_compile "$LINENO"
-then :
-  jm_ac_cv_header_stdint_h=yes
-else $as_nop
-  jm_ac_cv_header_stdint_h=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $jm_ac_cv_header_stdint_h" >&5
-printf "%s\n" "$jm_ac_cv_header_stdint_h" >&6; }
-  if test $jm_ac_cv_header_stdint_h = yes; then
-
-printf "%s\n" "#define HAVE_STDINT_H_WITH_UINTMAX 1" >>confdefs.h
-
-  fi
-
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for unsigned long long" >&5
-printf %s "checking for unsigned long long... " >&6; }
-if test ${ac_cv_type_unsigned_long_long+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-unsigned long long ull = 1ULL; int i = 63;
-int
-main (void)
-{
-unsigned long long ullmax = (unsigned long long) -1;
-     return ull << i | ull >> i | ullmax / ull | ullmax % ull;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_type_unsigned_long_long=yes
-else $as_nop
-  ac_cv_type_unsigned_long_long=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_type_unsigned_long_long" >&5
-printf "%s\n" "$ac_cv_type_unsigned_long_long" >&6; }
-  if test $ac_cv_type_unsigned_long_long = yes; then
-
-printf "%s\n" "#define HAVE_UNSIGNED_LONG_LONG 1" >>confdefs.h
-
-  fi
-
-
-
-
-  if test $jm_ac_cv_header_inttypes_h = no && test $jm_ac_cv_header_stdint_h = no; then
-
-    test $ac_cv_type_unsigned_long_long = yes \
-      && ac_type='unsigned long long' \
-      || ac_type='unsigned long'
-
-printf "%s\n" "#define uintmax_t $ac_type" >>confdefs.h
-
-  else
-
-printf "%s\n" "#define HAVE_UINTMAX_T 1" >>confdefs.h
-
-  fi
-
-
-
-  ac_fn_c_check_header_compile "$LINENO" "fcntl.h" "ac_cv_header_fcntl_h" "$ac_includes_default"
-if test "x$ac_cv_header_fcntl_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_FCNTL_H 1" >>confdefs.h
-
-fi
-
-  ac_fn_c_check_header_compile "$LINENO" "dustat.h" "ac_cv_header_dustat_h" "$ac_includes_default"
-if test "x$ac_cv_header_dustat_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_DUSTAT_H 1" >>confdefs.h
-
-fi
-ac_fn_c_check_header_compile "$LINENO" "sys/fs/s5param.h" "ac_cv_header_sys_fs_s5param_h" "$ac_includes_default"
-if test "x$ac_cv_header_sys_fs_s5param_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_SYS_FS_S5PARAM_H 1" >>confdefs.h
-
-fi
-ac_fn_c_check_header_compile "$LINENO" "sys/filsys.h" "ac_cv_header_sys_filsys_h" "$ac_includes_default"
-if test "x$ac_cv_header_sys_filsys_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_SYS_FILSYS_H 1" >>confdefs.h
-
-fi
-ac_fn_c_check_header_compile "$LINENO" "sys/statfs.h" "ac_cv_header_sys_statfs_h" "$ac_includes_default"
-if test "x$ac_cv_header_sys_statfs_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_SYS_STATFS_H 1" >>confdefs.h
-
-fi
-ac_fn_c_check_header_compile "$LINENO" "sys/statvfs.h" "ac_cv_header_sys_statvfs_h" "$ac_includes_default"
-if test "x$ac_cv_header_sys_statvfs_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_SYS_STATVFS_H 1" >>confdefs.h
-
-fi
-
-
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for statfs that truncates block counts" >&5
-printf %s "checking for statfs that truncates block counts... " >&6; }
-  if test ${fu_cv_sys_truncating_statfs+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-#if !defined(sun) && !defined(__sun)
-choke -- this is a workaround for a Sun-specific problem
-#endif
-#include <sys/types.h>
-#include <sys/vfs.h>
-int
-main (void)
-{
-struct statfs t; long c = *(t.f_spare);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_compile "$LINENO"
-then :
-  fu_cv_sys_truncating_statfs=yes
-else $as_nop
-  fu_cv_sys_truncating_statfs=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-fi
-
-  if test $fu_cv_sys_truncating_statfs = yes; then
-
-printf "%s\n" "#define STATFS_TRUNCATES_BLOCK_COUNTS 1" >>confdefs.h
-
-  fi
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $fu_cv_sys_truncating_statfs" >&5
-printf "%s\n" "$fu_cv_sys_truncating_statfs" >&6; }
-
-
+  gl_PREREQ_FSUSAGE_EXTRA
 fi
 
 cat >confcache <<\_ACEOF
@@ -10813,322 +9404,7 @@ else
     as_fn_error $? "Check for libz failed" "$LINENO" 5
 fi
 
-
-
-
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
-acx_pthread_ok=no
-
-# We used to check for pthread.h first, but this fails if pthread.h
-# requires special compiler flags (e.g. on True64 or Sequent).
-# It gets checked for in the link test anyway.
-
-# First of all, check if the user has set any of the PTHREAD_LIBS,
-# etcetera environment variables, and if threads linking works using
-# them:
-if test x"$PTHREAD_LIBS$PTHREAD_CFLAGS" != x; then
-        save_CFLAGS="$CFLAGS"
-        CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
-        save_LIBS="$LIBS"
-        LIBS="$PTHREAD_LIBS $LIBS"
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for pthread_join in LIBS=$PTHREAD_LIBS with CFLAGS=$PTHREAD_CFLAGS" >&5
-printf %s "checking for pthread_join in LIBS=$PTHREAD_LIBS with CFLAGS=$PTHREAD_CFLAGS... " >&6; }
-        cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-char pthread_join ();
-int
-main (void)
-{
-return pthread_join ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  acx_pthread_ok=yes
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $acx_pthread_ok" >&5
-printf "%s\n" "$acx_pthread_ok" >&6; }
-        if test x"$acx_pthread_ok" = xno; then
-                PTHREAD_LIBS=""
-                PTHREAD_CFLAGS=""
-        fi
-        LIBS="$save_LIBS"
-        CFLAGS="$save_CFLAGS"
-fi
-
-# We must check for the threads library under a number of different
-# names; the ordering is very important because some systems
-# (e.g. DEC) have both -lpthread and -lpthreads, where one of the
-# libraries is broken (non-POSIX).
-
-# Create a list of thread flags to try.  Items starting with a "-" are
-# C compiler flags, and other items are library names, except for "none"
-# which indicates that we try without any flags at all.
-
-acx_pthread_flags="pthreads none -Kthread -kthread lthread -pthread -pthreads -mthreads pthread --thread-safe -mt"
-
-# The ordering *is* (sometimes) important.  Some notes on the
-# individual items follow:
-
-# pthreads: AIX (must check this before -lpthread)
-# none: in case threads are in libc; should be tried before -Kthread and
-#       other compiler flags to prevent continual compiler warnings
-# -Kthread: Sequent (threads in libc, but -Kthread needed for pthread.h)
-# -kthread: FreeBSD kernel threads (preferred to -pthread since SMP-able)
-# lthread: LinuxThreads port on FreeBSD (also preferred to -pthread)
-# -pthread: Linux/gcc (kernel threads), BSD/gcc (userland threads)
-# -pthreads: Solaris/gcc
-# -mthreads: Mingw32/gcc, Lynx/gcc
-# -mt: Sun Workshop C (may only link SunOS threads [-lthread], but it
-#      doesn't hurt to check since this sometimes defines pthreads too;
-#      also defines -D_REENTRANT)
-# pthread: Linux, etcetera
-# --thread-safe: KAI C++
-
-case "${host_cpu}-${host_os}" in
-        *solaris*)
-
-        # On Solaris (at least, for some versions), libc contains stubbed
-        # (non-functional) versions of the pthreads routines, so link-based
-        # tests will erroneously succeed.  (We need to link with -pthread or
-        # -lpthread.)  (The stubs are missing pthread_cleanup_push, or rather
-        # a function called by this macro, so we could check for that, but
-        # who knows whether they'll stub that too in a future libc.)  So,
-        # we'll just look for -pthreads and -lpthread first:
-
-        acx_pthread_flags="-pthread -pthreads pthread -mt $acx_pthread_flags"
-        ;;
-esac
-
-if test x"$acx_pthread_ok" = xno; then
-for flag in $acx_pthread_flags; do
-
-        case $flag in
-                none)
-                { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether pthreads work without any flags" >&5
-printf %s "checking whether pthreads work without any flags... " >&6; }
-                ;;
-
-                -*)
-                { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether pthreads work with $flag" >&5
-printf %s "checking whether pthreads work with $flag... " >&6; }
-                PTHREAD_CFLAGS="$flag"
-                ;;
-
-                *)
-                { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for the pthreads library -l$flag" >&5
-printf %s "checking for the pthreads library -l$flag... " >&6; }
-                PTHREAD_LIBS="-l$flag"
-                ;;
-        esac
-
-        save_LIBS="$LIBS"
-        save_CFLAGS="$CFLAGS"
-        LIBS="$PTHREAD_LIBS $LIBS"
-        CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
-
-        # Check for various functions.  We must include pthread.h,
-        # since some functions may be macros.  (On the Sequent, we
-        # need a special flag -Kthread to make this header compile.)
-        # We check for pthread_join because it is in -lpthread on IRIX
-        # while pthread_create is in libc.  We check for pthread_attr_init
-        # due to DEC craziness with -lpthreads.  We check for
-        # pthread_cleanup_push because it is one of the few pthread
-        # functions on Solaris that doesn't have a non-functional libc stub.
-        # We try pthread_create on general principles.
-        cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <pthread.h>
-int
-main (void)
-{
-pthread_t th; pthread_join(th, 0);
-                     pthread_attr_init(0); pthread_cleanup_push(0, 0);
-                     pthread_create(0,0,0,0); pthread_cleanup_pop(0);
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  acx_pthread_ok=yes
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-
-        LIBS="$save_LIBS"
-        CFLAGS="$save_CFLAGS"
-
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $acx_pthread_ok" >&5
-printf "%s\n" "$acx_pthread_ok" >&6; }
-        if test "x$acx_pthread_ok" = xyes; then
-                break;
-        fi
-
-        PTHREAD_LIBS=""
-        PTHREAD_CFLAGS=""
-done
-fi
-
-# Various other checks:
-if test "x$acx_pthread_ok" = xyes; then
-        save_LIBS="$LIBS"
-        LIBS="$PTHREAD_LIBS $LIBS"
-        save_CFLAGS="$CFLAGS"
-        CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
-
-        # Detect AIX lossage: threads are created detached by default
-        # and the JOINABLE attribute has a nonstandard name (UNDETACHED).
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for joinable pthread attribute" >&5
-printf %s "checking for joinable pthread attribute... " >&6; }
-        cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <pthread.h>
-int
-main (void)
-{
-int attr=PTHREAD_CREATE_JOINABLE;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ok=PTHREAD_CREATE_JOINABLE
-else $as_nop
-  ok=unknown
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-        if test x"$ok" = xunknown; then
-                cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-#include <pthread.h>
-int
-main (void)
-{
-int attr=PTHREAD_CREATE_UNDETACHED;
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ok=PTHREAD_CREATE_UNDETACHED
-else $as_nop
-  ok=unknown
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-        fi
-        if test x"$ok" != xPTHREAD_CREATE_JOINABLE; then
-
-printf "%s\n" "#define PTHREAD_CREATE_JOINABLE \$ok" >>confdefs.h
-
-        fi
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: ${ok}" >&5
-printf "%s\n" "${ok}" >&6; }
-        if test x"$ok" = xunknown; then
-                { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: we do not know how to create joinable pthreads" >&5
-printf "%s\n" "$as_me: WARNING: we do not know how to create joinable pthreads" >&2;}
-        fi
-
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if more special flags are required for pthreads" >&5
-printf %s "checking if more special flags are required for pthreads... " >&6; }
-        flag=no
-        case "${host_cpu}-${host_os}" in
-                *-aix* | *-freebsd*)     flag="-D_THREAD_SAFE";;
-                *solaris* | *-osf* | *-hpux*) flag="-D_REENTRANT";;
-        esac
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: ${flag}" >&5
-printf "%s\n" "${flag}" >&6; }
-        if test "x$flag" != xno; then
-                PTHREAD_CFLAGS="$flag $PTHREAD_CFLAGS"
-        fi
-
-        LIBS="$save_LIBS"
-        CFLAGS="$save_CFLAGS"
-
-        # More AIX lossage: must compile with cc_r
-        # Extract the first word of "cc_r", so it can be a program name with args.
-set dummy cc_r; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_PTHREAD_CC+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test -n "$PTHREAD_CC"; then
-  ac_cv_prog_PTHREAD_CC="$PTHREAD_CC" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_PTHREAD_CC="cc_r"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_prog_PTHREAD_CC" && ac_cv_prog_PTHREAD_CC="${CC}"
-fi
-fi
-PTHREAD_CC=$ac_cv_prog_PTHREAD_CC
-if test -n "$PTHREAD_CC"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $PTHREAD_CC" >&5
-printf "%s\n" "$PTHREAD_CC" >&6; }
-else
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-fi
-
-
-else
-        PTHREAD_CC="$CC"
-fi
-
-
-
-
-
-# Finally, execute ACTION-IF-FOUND/ACTION-IF-NOT-FOUND:
-if test x"$acx_pthread_ok" = xyes; then
-        HAVE_PTHREAD=yes
-        :
-else
-        acx_pthread_ok=no
-        HAVE_PTHREAD=no
-fi
-ac_ext=c
-ac_cpp='$CPP $CPPFLAGS'
-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
-ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
-
+ACX_PTHREAD(HAVE_PTHREAD=yes,HAVE_PTHREAD=no)
 
 if [ "x$HAVE_PTHREAD" = "xyes" ]; then
  SAVE_CFLAGS="$CFLAGS"
@@ -12890,20 +11166,22 @@ fi
 
 
   if test x$sdl_exec_prefix != x ; then
-     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
-     if test x${SDL_CONFIG+set} != xset ; then
-        SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config
-     fi
+    sdl_config_args="$sdl_config_args --exec-prefix=$sdl_exec_prefix"
+    if test x${SDL_CONFIG+set} != xset ; then
+      SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config
+    fi
   fi
   if test x$sdl_prefix != x ; then
-     sdl_args="$sdl_args --prefix=$sdl_prefix"
-     if test x${SDL_CONFIG+set} != xset ; then
-        SDL_CONFIG=$sdl_prefix/bin/sdl-config
-     fi
+    sdl_config_args="$sdl_config_args --prefix=$sdl_prefix"
+    if test x${SDL_CONFIG+set} != xset ; then
+      SDL_CONFIG=$sdl_prefix/bin/sdl-config
+    fi
   fi
 
-
-  PATH="$prefix/bin:$prefix/usr/bin:$PATH"
+  as_save_PATH="$PATH"
+  if test "x$prefix" != xNONE; then
+    PATH="$prefix/bin:$prefix/usr/bin:$PATH"
+  fi
   # Extract the first word of "sdl-config", so it can be a program name with args.
 set dummy sdl-config; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -12950,6 +11228,7 @@ printf "%s\n" "no" >&6; }
 fi
 
 
+  PATH="$as_save_PATH"
   min_sdl_version=1.2.0
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for SDL - version >= $min_sdl_version" >&5
 printf %s "checking for SDL - version >= $min_sdl_version... " >&6; }
@@ -12957,19 +11236,21 @@ printf %s "checking for SDL - version >= $min_sdl_version... " >&6; }
   if test "$SDL_CONFIG" = "no" ; then
     no_sdl=yes
   else
-    SDL_CFLAGS=`$SDL_CONFIG $sdlconf_args --cflags`
-    SDL_LIBS=`$SDL_CONFIG $sdlconf_args --libs`
+    SDL_CFLAGS=`$SDL_CONFIG $sdl_config_args --cflags`
+    SDL_LIBS=`$SDL_CONFIG $sdl_config_args --libs`
 
-    sdl_major_version=`$SDL_CONFIG $sdl_args --version | \
+    sdl_major_version=`$SDL_CONFIG $sdl_config_args --version | \
            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\1/'`
-    sdl_minor_version=`$SDL_CONFIG $sdl_args --version | \
+    sdl_minor_version=`$SDL_CONFIG $sdl_config_args --version | \
            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\2/'`
     sdl_micro_version=`$SDL_CONFIG $sdl_config_args --version | \
            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
     if test "x$enable_sdltest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
+      ac_save_CXXFLAGS="$CXXFLAGS"
       ac_save_LIBS="$LIBS"
       CFLAGS="$CFLAGS $SDL_CFLAGS"
+      CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
       LIBS="$LIBS $SDL_LIBS"
       rm -f conf.sdltest
       if test "$cross_compiling" = yes
@@ -13048,6 +11329,7 @@ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 fi
 
        CFLAGS="$ac_save_CFLAGS"
+       CXXFLAGS="$ac_save_CXXFLAGS"
        LIBS="$ac_save_LIBS"
      fi
   fi
@@ -13069,6 +11351,7 @@ printf "%s\n" "no" >&6; }
        else
           echo "*** Could not run SDL test program, checking why..."
           CFLAGS="$CFLAGS $SDL_CFLAGS"
+          CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
           LIBS="$LIBS $SDL_LIBS"
           cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -13109,6 +11392,7 @@ fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam \
     conftest$ac_exeext conftest.$ac_ext
           CFLAGS="$ac_save_CFLAGS"
+          CXXFLAGS="$ac_save_CXXFLAGS"
           LIBS="$ac_save_LIBS"
        fi
      fi
@@ -14073,50 +12357,10 @@ printf "%s\n" "$as_me: WARNING: CAPS support wanted, but CAPS API not found" >&2
 
   if [ "$HAVE_CAPS" = "yes" ]; then
         SAVE_LIBS="$LIBS"
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for CAPSInit in CAPSImage framework" >&5
-printf %s "checking for CAPSInit in CAPSImage framework... " >&6; }
-if test ${ac_cv_framework_CAPSImage_CAPSInit+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  ac_check_framework_save_LIBS=$LIBS
-LIBS="-framework CAPSImage  $LIBS"
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-char CAPSInit ();
-int
-main (void)
-{
-return CAPSInit ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_framework_CAPSImage_CAPSInit=yes
-else $as_nop
-  ac_cv_framework_CAPSImage_CAPSInit=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_framework_save_LIBS
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_framework_CAPSImage_CAPSInit" >&5
-printf "%s\n" "$ac_cv_framework_CAPSImage_CAPSInit" >&6; }
-if test $ac_cv_framework_CAPSImage_CAPSInit = yes
-then :
-
+    AC_CHECK_FRAMEWORK(CAPSImage, CAPSInit,
       UAE_LIBS="$UAE_LIBS -weak_framework CAPSImage"
-
-printf "%s\n" "#define HAVE_FRAMEWORK_CAPSIMAGE 1" >>confdefs.h
-
-
-fi
+      AC_DEFINE(HAVE_FRAMEWORK_CAPSIMAGE, 1, [Define to 1 if you have the CAPS framework.])
+    )
     LIBS="$SAVE_LIBS"
   fi
 fi
@@ -14666,10 +12910,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${am__fastdepCXX_TRUE}" && test -z "${am__fastdepCXX_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCXX\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${am__fastdepOBJC_TRUE}" && test -z "${am__fastdepOBJC_FALSE}"; then
-  as_fn_error $? "conditional \"am__fastdepOBJC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${am__fastdepOBJC_TRUE}" && test -z "${am__fastdepOBJC_FALSE}"; then
